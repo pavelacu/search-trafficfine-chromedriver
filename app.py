@@ -2,12 +2,23 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
 from time import monotonic, sleep, ctime
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.schedulers.blocking import BlockingScheduler
 import os
 
 
-
+'''
+    Procedure: run
+        Execute a selenium instance for search a carplate in the webpage traffic fine.
+    parameters:    
+        url_webpage: string
+            URL webpage
+        type_vehicle: string (1 Character)
+            Type Vehicle, this a types: Particular= P, Moto= M, Comercial= C.
+        car_plate: string (3 DIGITS AND 3 LETTERS)
+            the car plate to search
+            Example: car_plate = '000AAA'
+    
+    return: not return
+'''
 
 def run(url_webpage, type_vehicle='P',  plate_car='000AAA', mode=0):
     try:
@@ -24,11 +35,16 @@ def run(url_webpage, type_vehicle='P',  plate_car='000AAA', mode=0):
             chrome_options.add_experimental_option('useAutomationExtension', False)
             browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)                    
 
+        # Get Webpage
         browser.get(url_webpage)
+        # HTML Select
         browser.find_element_by_xpath("//select[@name='tplaca']/option[text()='"+type_vehicle+"']").click()
+        # HTML TextBox
         inputElement = browser.find_element_by_id('nplaca')
         inputElement.send_keys(plate_car)
+        # HTML Submit Button
         inputElement.submit()    
+        # wait load data.
         sleep(5)
         
         # Not Remmission: High Probability
@@ -55,17 +71,7 @@ def run(url_webpage, type_vehicle='P',  plate_car='000AAA', mode=0):
     finally:
         browser.quit()
 
-
-if __name__ == '__main__':
-    '''
-    TYPE VEHICLE: P Particula, M Moto, C Comercial
-    Example : 'P'
-
-    CAR PLATE FORMAT:
-        3 DIGITS AND 3 LETTERS, example = 000AAA
-
-    Example: car_plate = '000AAA'
-    '''
+if __name__ == '__main__':   
     car_plate = os.environ.get("CARPLATE_EXAMPLE")    
     type_vehicle = 'P'
     url_webpage = 'http://especiales.muniguate.com/remisiones.htm'
