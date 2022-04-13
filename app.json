@@ -1,0 +1,22 @@
+{
+    "name": "Example Selenium on Heroku: Python",
+    "description": "Python app, which can easily be deployed to Heroku.",
+    "image": "heroku/python",
+    "repository": "https://git.heroku.com/datagtcompras.git",
+    "keywords": ["python", "selenium" ],    
+    "env": {
+      "SECRET_KEY": {
+        "description": "Your_Secret_key.",
+        "generator": "secret"
+      }
+    },
+    "environments": {
+      "test": {
+        "scripts": {
+          "test-setup": "python app.py collectstatic --noinput",
+          "test": "python app.py test"
+        }
+      }
+    }
+  }
+  
