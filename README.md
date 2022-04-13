@@ -18,6 +18,8 @@ This project is a selenium instance for search traffic fine from webpage. The ap
         (search the own Time Zone in https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
 
 3. Install a builpacks: (Heroku Dashboard > Settings > Buildpacks > Add builpack)
+    - python environment: 
+        select heroku/python in buildpack general.
     - Chromedriver for selenium  
     https://github.com/heroku/heroku-buildpack-chromedriver.git  
     - Executable Chrome app  

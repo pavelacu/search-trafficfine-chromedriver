@@ -2,7 +2,7 @@
     "name": "Example Selenium on Heroku: Python",
     "description": "Python app, which can easily be deployed to Heroku.",
     "image": "heroku/python",
-    "repository": "https://git.heroku.com/datagtcompras.git",
+    "repository": "https://github.com/pavelacu/search-trafficfine-chromedriver.git",
     "keywords": ["python", "selenium" ],    
     "env": {
       "SECRET_KEY": {
