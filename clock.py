@@ -1,4 +1,4 @@
-from app import run
+from app import run, webdriver
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.blocking import BlockingScheduler
