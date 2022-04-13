@@ -2,7 +2,6 @@
 This project is a selenium instance for search traffic fine from webpage. The app execute from heroku infrastructure with buildpacks chromedriver and chrome app.
 
 ## Install in Heroku:
-### requirements:
 1. Get a Heroku account
 2. Create a new application
 2. Set the enviroment variables in Heroku app:  (Heroku Dashboard > Settings > Config Vars > Reveal Config Vars)  
@@ -19,10 +18,21 @@ This project is a selenium instance for search traffic fine from webpage. The ap
 
 3. Install a builpacks: (Heroku Dashboard > Settings > Buildpacks > Add builpack)
     - python environment: 
-        select heroku/python in buildpack general.
+        select heroku/python in the buildpack panel (it's include a pip and set enviroment defined in runtime.txt).
     - Chromedriver for selenium  
     https://github.com/heroku/heroku-buildpack-chromedriver.git  
     - Executable Chrome app  
     https://github.com/heroku/heroku-buildpack-google-chrome.git  
 
-4. Deploy App (Heroku Dashboard > Deploy)  
+4. Install Heroku cli (https://devcenter.heroku.com/articles/heroku-cli) and login.
+```bash
+heroku login
+```
+
+5. Enable Free Dynos (Not require paid, 500 hours free and sleep each 30 minutos without use). In this case is 'clock', but there are more options (web, worker and clock)
+```bash
+heroku ps:scale clock=1 --app search-trafficfine-chromedriver
+```
+
+4. Deploy App (Heroku Dashboard > Deploy)
+
